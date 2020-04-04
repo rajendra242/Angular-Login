@@ -1,0 +1,15 @@
+<!-- <a routerLink="/login">Login</a> -->
+<!-- <a routerLinl="/admin">Go To admin</a> -->
+<table class="m-auto" border="1">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        
+    </tr>
+    <tbody *ngIf="allData">
+        <tr *ngFor="let val of allUser; let i = index">
+            <td>{{val.username}}</td>
+            <td>{{val.password}}</td>
+        </tr>
+    </tbody>
+</table>

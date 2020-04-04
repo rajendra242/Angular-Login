@@ -1,0 +1,76 @@
+
+
+/*--------------------------------------------------------------
+TABLE OF CONTENTS:
+----------------------------------------------------------------
+1. Bootstrap
+2. Base
+    ## Typography
+    ## Helpers
+3. layouts
+4. components
+5. vendors
+6. utils
+
+--------------------------------------------------------------*/
+
+@import "mediciti-lite/utils/variables";
+
+
+/*--------------------------------------------------------------
+1. Bootstrap
+--------------------------------------------------------------*/
+@import "vendor/bootstrap",
+        "vendor/font-awesome";
+
+
+/*--------------------------------------------------------------
+2. Base
+--------------------------------------------------------------*/
+@import "vendor/animate",
+        "mediciti-lite/base/helpers",
+        "mediciti-lite/base/fonts",
+        "mediciti-lite/base/typography";
+
+
+/*--------------------------------------------------------------
+
+3. layout
+--------------------------------------------------------------*/
+@import "mediciti-lite/layout/footer",
+        "mediciti-lite/layout/page-content",
+        "mediciti-lite/layout/navigation",
+        "mediciti-lite/layout/sections";
+
+
+/*--------------------------------------------------------------
+4. Components
+--------------------------------------------------------------*/
+@import "mediciti-lite/component/banner",
+        "mediciti-lite/component/top-header",
+        "mediciti-lite/component/header",
+        "mediciti-lite/component/botfooter",
+        "mediciti-lite/component/cta",
+        "mediciti-lite/component/features",
+        "mediciti-lite/component/team",
+        "mediciti-lite/component/prefooter",
+        "mediciti-lite/component/single-deal",
+        "mediciti-lite/component/pricing",
+        "mediciti-lite/component/blog",
+        "mediciti-lite/component/testimonial";
+
+
+/*--------------------------------------------------------------
+5. Vendors
+--------------------------------------------------------------*/
+@import "vendor/slick",
+        "vendor/ionicons",
+        "vendor/simplycountdown",
+        "vendor/vendor-overrides";
+
+/*--------------------------------------------------------------
+6. utils
+--------------------------------------------------------------*/
+@import "mediciti-lite/utils/hover-effects",
+        "mediciti-lite/utils/media-queries";
+
