@@ -7,7 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
     {
-      path: '',
+      path: 'Home',
       component: HomeComponent
     },
     {

@@ -17,6 +17,9 @@ import { FlexLayoutModule }from "@angular/flex-layout"
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogExampleComponent } from './mat-dialog-example/mat-dialog-example.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
     LoginComponent,
     HomeComponent,
     AdminComponent,
+    MatDialogExampleComponent,
 
   ],
   imports: [
@@ -40,10 +44,13 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
     FlexLayoutModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
-
+    FormsModule,
+    MatDialogModule,
+    MatDatepickerModule
+    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[MatDialogExampleComponent]
 })
 export class AppModule { }

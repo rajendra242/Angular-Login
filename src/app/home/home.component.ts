@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import  {Router } from '@angular/router';
+import {MatDialog, MatDialogConfig} from "@angular/material";
+import { AuthService } from '../auth.service';
+import { MatDialogExampleComponent } from '../mat-dialog-example/mat-dialog-example.component';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +12,13 @@ import  {Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   allUser = [];
 	obj:any; 
-	
+	_Auth : AuthService
 	allData:any	= {
 		username: "",
 		password: "",
 	}
-  constructor(private router:Router) {
-    console.log(this.router.getCurrentNavigation().extras.state)
+  constructor(private router:Router,private dialog: MatDialog) {
+    console.log(this.router.getCurrentNavigation().extras.state);
     this.obj = this.router.getCurrentNavigation().extras.state;
     this.allData = this.obj;
    
@@ -25,5 +28,11 @@ export class HomeComponent implements OnInit {
     this.allUser.push(this.allData);
     console.log(this.allUser)
   }
+  bookappointment(){
+    console.log('appointment boking model is opent')
+    this.dialog.open(MatDialogExampleComponent);
+    // this._Auth.initializeFomrGroup()
 
+
+  }
 }

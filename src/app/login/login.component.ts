@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this.jsonapi = data
        
       console.log("Success", this.jsonapi)
-      this.router.navigate([''], { state: value })
+      this.router.navigate(['Home'], { state: value })
     },
     error => {
       console.error(" Error ", error)

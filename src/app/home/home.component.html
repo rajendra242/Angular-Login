@@ -1,9 +1,9 @@
 <!-- <a routerLink="/login">Login</a> -->
 <!-- <a routerLinl="/admin">Go To admin</a> -->
-<table class="m-auto" border="1">
+<table class="m-auto" border="1" align="center">
     <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th>Patients Name</th>
+        <th>Password Name</th>
         
     </tr>
     <tbody *ngIf="allData">
@@ -12,4 +12,6 @@
             <td>{{val.password}}</td>
         </tr>
     </tbody>
+   
 </table>
+<button mat-raised-button type="submi" color="primary" (click)="bookappointment()">bookappointment</button>
