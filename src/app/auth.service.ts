@@ -22,11 +22,11 @@ export class AuthService {
   createpost(Newpost : Post){
     console.log("the Post is ==>", Newpost);
     
-    return this.http.post<Post>(`http://localhost/wordpress/wordpress//wp-json/wp/v2/pages?slug=Appointment
-    &Name =${Post.name}
-    &Phone=${Post.phone}
-    &Email =${Post.email}
-    &Description =${Post.discription}`
+    return this.http.post<Post>(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/appointment-book
+    &user_name =${Post.name}
+    &user_phone=${Post.phone}
+    &user_email =${Post.email}
+    &user_description =${Post.discription}`
      + 'this is data',Newpost, this.httpOption)
     .pipe(
       catchError(this.handleError)

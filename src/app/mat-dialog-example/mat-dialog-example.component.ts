@@ -11,12 +11,11 @@ import { AuthService } from '../auth.service';
 })
 export class MatDialogExampleComponent implements OnInit {
   appointmentbooking: FormGroup;
-
   DataPost = new Post()
-  // service = AuthService
-
   error: any;
-  // _Auth: AuthService;
+  postData: any;
+  url = 'http://localhost/wordpress/wordpress/wp-json/custom-plugin/appointment-book';
+  json;
   constructor(private http: HttpClient, private _Auth: AuthService) {
     this.appointmentbooking = new FormGroup({
       Name: new FormControl('', Validators.required),
@@ -24,11 +23,20 @@ export class MatDialogExampleComponent implements OnInit {
       Email: new FormControl('', Validators.required),
       Discription: new FormControl('', Validators.required)
     });
+   
   }
 
   ngOnInit() {
   }
   BookAppointment(value) {
+    this.postData = value
+    this.http.post(this.url, this.postData).toPromise().then((data:any) =>{
+      console.log('this is my data in ts file',this.postData)
+      this.json = JSON.stringify(data.json)
+      console.log(data.json)
+    });
+    
+
     //   this.http.get(`http://localhost/wordpress/wordpress//wp-json/wp/v2/pages?slug=Appointment
     //   &Name =${'value.name'}
     //   &Phone=${'value.phone'}
@@ -41,13 +49,14 @@ export class MatDialogExampleComponent implements OnInit {
     //   error => {
     //     console.error(" Error ", error)
     //   })
-    console.log("the value is ====>", value);
-    console.log("yje data post ===>", this.DataPost);
-    return this._Auth.createpost(value).subscribe(
-      data => this.DataPost.push(data),
-      error => this.error = error,
-      
-    );
+
+    // console.log("the value is ====>", value);
+    
+    // return this._Auth.createpost(value).subscribe(
+    //   data => this.DataPost.push(data),
+    //   error => this.error = error,
+     
+    // );
   }
 }
 
