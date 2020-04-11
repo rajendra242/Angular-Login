@@ -1,0 +1,15 @@
+{
+    "/api": {
+        "target": "http://localhost:80",
+        "secure": false
+    },
+    "architect": {
+        "serve": {
+            "builder": "@angular-devkit/build-angular:dev-server",
+            "options": {
+                "browserTarget": "localhost:80:build",
+                "proxyConfig": "src/proxy.conf.json"
+            }
+        }
+    }
+}
