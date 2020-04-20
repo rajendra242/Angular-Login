@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     
   }
 
-  loginUser(value) {
+  loginUser(value){
     this.http.get(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/login?username=${value.username}&password=${value.password}`)
     .subscribe(data => {
       // this.jsonapi = data
@@ -33,11 +33,18 @@ export class LoginComponent implements OnInit {
        
       console.log("Success", this.jsonapi)
       this.router.navigate(['Home'], { state: value })
+
+      if (this.jsonapi != null) {
+        console.log('this is loged user ID =====>',this.jsonapi.ID)
+        localStorage.setItem("id", JSON.stringify(this.jsonapi.ID));
+        this.router.navigate(['Home'], {state :value})
+      }else{
+        console.log('id not found')
+      }
     },
     error => {
       console.error(" Error ", error)
     })
-    
     // this._auth.getUser().subscribe((res) => {
     //   console.log("the response is ====", res)
     // }, (err) => {

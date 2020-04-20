@@ -20,6 +20,7 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatDialogExampleComponent } from './mat-dialog-example/mat-dialog-example.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { UserbookingsComponent } from './userbookings/userbookings.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     HomeComponent,
     AdminComponent,
     MatDialogExampleComponent,
+    UserbookingsComponent,
 
   ],
   imports: [
