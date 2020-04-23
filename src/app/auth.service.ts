@@ -32,31 +32,29 @@ export class AuthService {
   //   .pipe(
   //     catchError(this.handleError)
   //   );
+  // }
 
-
-  Bookingappointment(Newbooking : Post) :  Observable<Post>{
-    console.log("booking called", Newbooking);
-    return this.http.post<Post>('http://localhost/wordpress/wordpress/wp-admin/admin-ajax.php',Newbooking,{
-      headers : new HttpHeaders({
-        'Content-Type' : 'application/json'
-      })
+  // Bookingappointment(Newbooking : Post) :  Observable<Post>{
+  //   console.log("booking called", Newbooking);
+  //   return this.http.post<Post>('http://localhost/wordpress/wordpress/wp-admin/admin-ajax.php',Newbooking,{
+  //     headers : new HttpHeaders({
+  //       'Content-Type' : 'application/json'
+  //     })
       
-    })
-    .pipe(
-          catchError(this.handleError)
-       );
-  }
+  //   })
+  //   .pipe(
+  //         catchError(this.handleError)
+  //      );
+  // }
 
 
   Dispalyappointment(demo){
+    const  headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     console.log('service called', demo);
-    return this.http.get(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/userbookingappointments?ID=${demo}`);
-
-    // .subscribe(data => {
-      // this.data.push(data);
-
-        // console.log('this is booking data ===>',data)
-    // });
+    return this.http.get
+    (`http://localhost/wordpress/wordpress/wp-json/custom-plugin/userbookingappointments?userID=${demo}`,
+    {headers, responseType: 'text'});
+    
   }
 
   // bookingappointment(Newbooking : Post){

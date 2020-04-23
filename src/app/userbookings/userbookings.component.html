@@ -1,5 +1,9 @@
 <h1>Your Login Id is {{routerdata1}}</h1>
 <h1>Your booking Appointments dtails</h1>
-<h3>{{routerdata.name}}</h3>
-<h3>{{routerdata.email}}</h3>
-<h3>{{routerdata.phone}}</h3>
+<div *ngFor="let userid of userdata">
+    {{userid}}
+    {{userid.name}}
+    {{userid.email}}
+    {{userid.phone}}
+    {{userid.description}}
+</div>
