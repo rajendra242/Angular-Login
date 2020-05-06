@@ -1,18 +1,68 @@
-<!-- <a routerLink="/login">Login</a> -->
+<!-- <a routerLink="/login/Home">Login</a> -->
 <!-- <a routerLinl="/admin">Go To admin</a> -->
-<table class="m-auto" border="1" align="center">
-    <tr>
-        <th>Patients Name</th>
-        <th>UserPassword</th>
-        
-    </tr>
-    <tbody *ngIf="allData">
-        <tr *ngFor="let val of allUser; let i = index">
-            <td>{{val.username}}</td>
-            <td>{{val.password}}</td>
-        </tr>
-    </tbody>
-   <!-- <h1>{{response}}</h1> -->
-</table>
-<h3 style="text-align: center;"><button mat-raised-button type="submi" color="primary" (click)="bookappointment()">bookappointment</button></h3>
-<h3 style="text-align: center;"><button mat-raised-button type="submi" color="primary" (click)="SeeYourAppointments()">SeeYourAppointments</button></h3>    
+
+<body>
+    <!-- <div class="main_div"> -->
+    <!-- <table class="m-auto" border="1" align="center" border="0px"> -->
+    <!-- <tr>
+                <th>Patients Name</th>
+                <th>UserPassword</th>
+
+            </tr> -->
+    <!-- <tbody *ngIf="allData">
+                <tr *ngFor="let val of allUser; let i = index">
+                    <td>{{val.username}}</td>
+                    <td>{{val.password}}</td>
+                </tr>
+            </tbody> -->
+    <!-- <mat-card>Simple card</mat-card> -->
+
+    <!-- <h1>{{response}}</h1> -->
+    <!-- </table> -->
+    <div class="container">
+        <div class="row">
+            <div class="main_div">
+                <div class="col-md-4">
+                    <button mat-raised-button type="submi" color="primary" (click)="bookappointment()">
+                        <i class="fa fa-book"></i>
+                        <h5>BOOKAPPOINTMENT</h5>
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button mat-raised-button type="submi" color="primary" (click)="SeeYourAppointments()">
+                        <i class="fa fa-eye"></i>
+                        <h5>BOOED APPOINTMENTS</h5>
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button mat-raised-button type="submi" color="primary" (click)="logout()">
+                        <i class="fa fa-user"></i>
+                        <h5>LOGOUT</h5>
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button mat-raised-button type="submi" color="primary" (click)="RealTime()">
+                        <i class="fa fa-user"></i>
+                        <h5>Booked And See</h5>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- </div> -->
+    <!-- <table border="1">
+    <tr *ngFor="let emp of employees">
+    <td>{{emp.code}}</td>
+    <td>{{emp.name |mypip :emp.gender}}</td>
+    <td>{{emp.gender}}</td>
+    <td>{{emp.salary}}</td>
+    
+</tr>
+</table> -->
+    <!-- <div *ngFor="let data of allUser">
+    {{allData}}
+</div> -->
+
+
+   
+</body>

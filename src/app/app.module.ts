@@ -21,6 +21,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatDialogExampleComponent } from './mat-dialog-example/mat-dialog-example.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { UserbookingsComponent } from './userbookings/userbookings.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthService } from './auth.service';
+import { MypipPipe } from './mypip.pipe';
+import { RealComponent } from './real/real.component';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +35,8 @@ import { UserbookingsComponent } from './userbookings/userbookings.component';
     AdminComponent,
     MatDialogExampleComponent,
     UserbookingsComponent,
+    MypipPipe,
+    RealComponent,
 
   ],
   imports: [
@@ -49,9 +56,8 @@ import { UserbookingsComponent } from './userbookings/userbookings.component';
     FormsModule,
     MatDialogModule,
     MatDatepickerModule
-    
   ],
-  providers: [],
+  providers: [ AuthGuard ,AuthService],
   bootstrap: [AppComponent],
   entryComponents:[MatDialogExampleComponent]
 })

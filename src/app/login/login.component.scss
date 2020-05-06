@@ -1,14 +1,44 @@
-.main-div mat-card{
-        padding: 50px 20px 50px 20px; 
-        margin-top: 10%;
-        background-color: lightseagreen;
-}
-.main-div
- mat-form-field{
-    color: black;
-}
-.toopbar{
+body {
+    // background-image: -webkit-linear-gradient( 135deg, rgb(101, 84, 241) 0%, 
+    // rgb(21, 209, 229) 35%, 
+    // rgb(243, 120, 239) 100%);
+    // background-image : url('/assets/login2.jpg');
     background-color: black;
+    background-repeat: no-repeat;
+    background-size  : 100% 100%;
+
+
+}
+.card{
+    max-width: 35% !important;
+}
+.main-div mat-card {
+    padding   : 50px 20px 50px 20px;
+    margin-top: 10%;
+    background-image: -webkit-linear-gradient(135deg, rgb(101, 84, 241) 0%,
+            rgb(21, 209, 229) 35%,
+            rgb(243, 120, 239) 100%);
+}
+
+
+.main-div mat-form-field {
     color: white;
-    margin-bottom: 20px;
+}
+
+.toopbar {
+    background-color: transparent;
+    text-align      : center;
+    color           : black;
+    margin-bottom   : 20px;
+}
+.mat-form-field-appearance-legacy .mat-form-field-label {
+    color: white !important;
+}
+
+.mat-fab,
+.mat-flat-button,
+.mat-mini-fab,
+.mat-raised-button {
+    background-color: black !important;
+    color           : white;
 }

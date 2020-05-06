@@ -1,0 +1,52 @@
+<div class="container">
+    <!-- <div class="row"> -->
+        <app-mat-dialog-example (send_data)="displayemitdata($event)"></app-mat-dialog-example>
+    <!-- </div> -->
+</div>
+<div class="row justify-content-center mt-5">
+    <div class="col-8">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let child of parent; let i = index">
+                    <th scope="row"> {{child.id}}</th>
+                    <td> {{child.name}}</td>
+                    <td> {{child.email}}</td>
+                    <td> {{child.phone}}</td>
+                    <td> {{child.description}}</td>
+                    <td><button mat-raised-button color="primary" (click)="update(child.id)">Edite</button>
+                        <button mat-raised-button color="red" (click)="delete(child.id,i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of userdata">
+                    <th scope="row"> {{data.name}}</th>
+                    <td> {{data.email}}</td>
+                    <td> {{data.phone}}</td>
+                    <td> {{data.description}}</td>
+                </tr>
+            </tbody>
+        </table> -->
+    </div>
+</div>
