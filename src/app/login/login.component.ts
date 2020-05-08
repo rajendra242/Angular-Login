@@ -18,16 +18,19 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
+      
     });
   }
 
   ngOnInit() {
 
   }
-
+  Remeber(value){
+    alert(value.username);
+  }
   loginUser(value) {
     this._Auth.login(value).subscribe((data) => {
-      console.log('this is data form server',data)
+      console.log('this is data form server', data)
       JSON.stringify(data);
       this.jsonapi = data;
 
@@ -46,6 +49,7 @@ export class LoginComponent implements OnInit {
       error => {
         console.error(" Error ", error)
       })
+      
     // })
     // this.http.get(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/login?username=${value.username}&password=${value.password}`)
     // .subscribe(data => {
@@ -80,5 +84,9 @@ export class LoginComponent implements OnInit {
     //   console.log('username and password is worng')
     // }
 
+  }
+  NewUser(){
+    console.log('new form')
+    this.router.navigate(['new']);
   }
 }

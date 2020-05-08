@@ -25,6 +25,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { AuthService } from './auth.service';
 import { MypipPipe } from './mypip.pipe';
 import { RealComponent } from './real/real.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { NewUserComponent } from './new-user/new-user.component';
 
 
 @NgModule({
@@ -37,6 +39,7 @@ import { RealComponent } from './real/real.component';
     UserbookingsComponent,
     MypipPipe,
     RealComponent,
+    NewUserComponent,
 
   ],
   imports: [
@@ -55,7 +58,8 @@ import { RealComponent } from './real/real.component';
     ReactiveFormsModule,
     FormsModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCheckboxModule
   ],
   providers: [ AuthGuard ,AuthService],
   bootstrap: [AppComponent],

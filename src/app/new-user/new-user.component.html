@@ -1,0 +1,50 @@
+<body style="background-color: black;">
+    <div class="container">
+        <form [formGroup]='newuser' class="form">
+            <h2 style="text-align: center;">Add New-User</h2>
+            <div class="row">
+
+                <div class="col-6 set_field">
+                    <mat-form-field>
+                        <input matInput placeholder="user_login" formControlName="user_login" name="user_login">
+                    </mat-form-field>
+                </div>
+                <div class="col-6 set_field">
+                    <mat-form-field>
+                        <input type="password" matInput placeholder="user_pass" formControlName="user_pass"
+                            name="user_pass">
+                    </mat-form-field>
+                </div>
+                <div class="col-6 set_field">
+                    <mat-form-field>
+                        <input matInput type="user_nicename" placeholder="user_nicename" formControlName="user_nicename"
+                            name="user_nicename">
+                    </mat-form-field>
+                </div>
+                <div class="col-6 set_field">
+                    <mat-form-field>
+                        <input matInput type="email" placeholder="user_email" formControlName="user_email"
+                            name="user_email">
+                    </mat-form-field>
+                </div>
+                <div class="col-12 set_field">
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="user_registered" formControlName="user_registered"
+                            name="user_registered">
+                    </mat-form-field>
+                </div>
+
+                <div class="col-12 set_field">
+                    <mat-form-field>
+                        <input matInput type="text" placeholder="display_name" formControlName="display_name"
+                            name="display_name">
+                    </mat-form-field>
+                </div>
+                <div class="col-6" style="width: 100%; margin-left: 40%;">
+                    <button mat-raised-button type="submit" color="primary"
+                        (click)="Addnew(newuser.value)">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>

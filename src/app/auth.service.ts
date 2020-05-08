@@ -24,18 +24,23 @@ export class AuthService {
   private _teacherMessageSource = new Subject<any>();
   teachermessage$ = this._teacherMessageSource.asObservable();
 
-  private _table = new Subject<any>();
-  table$ = this._table.asObservable();
 
+  private _hide = new Subject<any>();
+  hide$ = this._hide.asObservable();
+  
+  
   constructor(private http: HttpClient, private router: Router) { }
 
   sendMessage(message: any) {
     this._teacherMessageSource.next(message);
   }
 
-  sendtable(message: any) {
-    this._table.next(message);
+  hideButton(hide : any){
+    this._hide.next(hide);
   }
+
+
+  
 
 
 
@@ -133,10 +138,30 @@ export class AuthService {
     console.log('this is deleted user id ======>', id)
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
     return this.http.delete(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/delete?id=${id}`,
-    { headers, responseType: 'text' },);
- }
+      { headers, responseType: 'text' });
+  }
+
+  New(value) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
+    console.log('this is name ====>',value.user_login);
+    console.log('this is pass ====>',value.user_pass);
+    console.log('this is nicename ====>',value.user_nicename);
+    console.log('this is email ====>',value.user_email);
+    console.log('this is resited ====>',value.user_registered);
+    console.log('this is disp ====>',value.display_name);
 
 
+    return this.http.post(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/newuser?
+    user_login=${value.user_login}
+    user_pass=${value.user_pass}
+    user_nicename=${value.user_nicename}
+    user_email=${value.user_email}
+    user_registered=${value.user_registered}
+    display_name=${value.display_name}
+    `,
+      { headers, responseType: 'text' });
+
+  }
 
 
 

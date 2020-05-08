@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { AuthService } from '../auth.service';
@@ -13,18 +13,20 @@ import { error } from 'protractor';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  allUser = [];
-  obj: any;
-  bookings: any;
-  allData: any = {
-    username: "",
-    password: "",
-  }
-  response: any = {
-    name: ' ',
-    email: '',
-    phone: ''
-  }
+  // allUser = [];
+  SeeAp_obj: any;
+  @Input() init : number = 1;
+  public counter: number = 0;
+  // bookings: any;
+  // allData: any = {
+  //   username: "",
+  //   password: "",
+  // }
+  // response: any = {
+  //   name: ' ',
+  //   email: '',
+  //   phone: ''
+  // }
   namesearch: string = "";
 
   employees: any = [
@@ -54,21 +56,22 @@ export class HomeComponent implements OnInit {
     },
   ]
   constructor(private router: Router, private dialog: MatDialog, private _Auth: AuthService, private http: HttpClient) {
-    console.log('router data', this.router.getCurrentNavigation().extras.state);
-    this.obj = this.router.getCurrentNavigation().extras.state;
-    this.allData = this.obj;
-    console.log('this is alldata', this.allData)
+    // console.log('router data', this.router.getCurrentNavigation().extras.state);
+    // this.obj = this.router.getCurrentNavigation().extras.state;
+    // this.allData = this.obj;
+    // console.log('this is alldata', this.allData)
 
-    if (this.allData != null) {
-      console.log('this is user id ====>', this.allData)
-    } else {
-      console.log('this is not proper way')
-    }
+    // if (this.allData != null) {
+      // console.log('this is user id ====>', this.allData)
+    // } else {
+      // console.log('this is not proper way')
+    // }
   }
 
   ngOnInit() {
-    this.allUser.push(this.allData);
-    console.log('user data', this.allUser)
+    this.startcoundown();
+    // this.allUser.push(this.allData);
+    // console.log('user data', this.allUser)
     // this.Lodash();
   }
   // Lodash() {
@@ -95,11 +98,6 @@ export class HomeComponent implements OnInit {
   }
 
 
-  logout() {
-    this._Auth.logout().subscribe((res) => {
-      console.log('user logout');
-    })
-  }
 
 
   SeeYourAppointments() {
@@ -107,19 +105,51 @@ export class HomeComponent implements OnInit {
     console.log("the id is ====>", demo);
 
     this._Auth.Dispalyappointment(demo).subscribe((res) => {
-      this.obj = res
-      console.log('server response', this.obj)
-      this.router.navigate(['userbookings'], { state: this.obj })
+      this.SeeAp_obj = res
+      console.log('server response', this.SeeAp_obj)
+      // this._Auth.sendMessage1(this.SeeAp_obj);
+      
+
+      this.router.navigate(['userbookings'], { state: this.SeeAp_obj })
     }, (err) => {
       console.log("the errror is ==>", err);
     });
 
-    this.bookings = demo;
+    // this.bookings = demo;
 
   }
 
   RealTime() {
     console.log('routning to real plese wait');
     this.router.navigate(['real']);
+  }
+
+  logout() {
+    this._Auth.logout().subscribe((res) => {
+      console.log('user logout');
+
+      alert(this.counter)
+    })
+  }
+
+  startcoundown(){
+    if(this.init && this.init >0){
+      this.counter = this.init;
+      this.docountdown();
+    }
+  }
+  docountdown(){
+    setTimeout(()=>{
+      this.counter = this.counter +1;
+      this.proccesscount();
+    },1000)
+  }
+  proccesscount(){
+    console.log("counting start", this.counter);
+    if(this.counter == 0){
+      console.log("counter end ---->");
+    }else{
+      this.docountdown();
+    }
   }
 }

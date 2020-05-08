@@ -1,4 +1,6 @@
 <body>
+    <button mat-raised-button type="submit" (click)="NewUser()">Register</button>
+
     <div fxLayoutAlign="center center fxFlexFill" class="main-div">
         <mat-card fxFlex="25" class="card">
             <mat-toolbar class="toopbar"><i class="fa fa-user"></i>LOGIN</mat-toolbar>
@@ -10,6 +12,7 @@
                     <input type="password" matInput placeholder="password" formControlName="password" name="password">
                 </mat-form-field>
                 <button mat-raised-button type="submit" (click)="loginUser(loginForm.value)">Login</button>
+                <mat-checkbox (click)="Remeber(loginForm.value)">Remeber me</mat-checkbox>
             </form>
         </mat-card>
     </div>

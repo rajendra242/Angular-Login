@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { from } from 'rxjs';
 import { AuthGuard } from './guards/auth.guard';
 import { RealComponent } from './real/real.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,11 @@ const routes: Routes = [
     {
       path :'mat',
       component : MatDialogExampleComponent
+
+    },
+    {
+      path :'new',
+      component : NewUserComponent
 
     }
     // {
