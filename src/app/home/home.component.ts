@@ -101,8 +101,10 @@ export class HomeComponent implements OnInit {
 
 
   SeeYourAppointments() {
-    var demo = JSON.parse(localStorage.getItem("id"));
+    var demo :any  = JSON.parse(localStorage.getItem("id"));
     console.log("the id is ====>", demo);
+  
+    
 
     this._Auth.Dispalyappointment(demo).subscribe((res) => {
       this.SeeAp_obj = res
@@ -123,7 +125,16 @@ export class HomeComponent implements OnInit {
     console.log('routning to real plese wait');
     this.router.navigate(['real']);
   }
+  adminappointment(){
+    console.log('this is new admin site appointment');
+    this._Auth.status_confirm().subscribe((data)=>{
+      console.log("this is confirmdata =====>", data)
+      // this.parent.push(data);
+      
+      this.router.navigate(['adminapp'],{state : data});
+  })
 
+  }
   logout() {
     this._Auth.logout().subscribe((res) => {
       console.log('user logout');
@@ -145,7 +156,7 @@ export class HomeComponent implements OnInit {
     },1000)
   }
   proccesscount(){
-    console.log("counting start", this.counter);
+    // console.log("counting start", this.counter);
     if(this.counter == 0){
       console.log("counter end ---->");
     }else{

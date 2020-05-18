@@ -44,6 +44,10 @@ export class NewUserComponent implements OnInit {
   }
 
   Addnew(value) {
+    console.log("This is new user email======>",value.user_email);
+    this._Auth.new_user_mail(value).subscribe((data) => {
+      console.log("====> Mail send it",data)
+    })
     // this._Auth.New(value).subscribe((data) => {
     //   console.log('this is data form server', data)
     //   JSON.stringify(data);
@@ -52,13 +56,16 @@ export class NewUserComponent implements OnInit {
     const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     this.addnew = `http://localhost/wordpress/wordpress/wp-json/custom-plugin/newuser?`;
     // console.log(this.addnew);
-    return this.http.post(this.addnew,`user_login=${value.user_login}&user_pass=${value.user_pass}
+    return this.http.post(this.addnew, `user_login=${value.user_login}&user_pass=${value.user_pass}
     &user_nicename=${value.user_nicename}
     &user_email=${value.user_email}
     &user_registered=${value.user_registered}
-    &display_name=${value.display_name}`,{headers , responseType: 'text'})
-    .subscribe((data)=>{
-      console.log('this is new datapost ====>', data);
-    })
+    &display_name=${value.display_name}`, { headers, responseType: 'text' })
+      .subscribe((data) => {
+        console.log('this is new datapost ====>', data);
+      })
+
+
   }
+ 
 }

@@ -27,7 +27,14 @@ import { MypipPipe } from './mypip.pipe';
 import { RealComponent } from './real/real.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NewUserComponent } from './new-user/new-user.component';
+import { httpInterceptProvidees } from './http-interseptor';
+import { ForgetpassComponent } from './forgetpass/forgetpass.component';
+import { NewappointmentComponent } from './newappointment/newappointment.component';
+import {MatNativeDateModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTabsModule} from '@angular/material/tabs';
 
+// import { MatMomentDateModule } from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -40,6 +47,8 @@ import { NewUserComponent } from './new-user/new-user.component';
     MypipPipe,
     RealComponent,
     NewUserComponent,
+    ForgetpassComponent,
+    NewappointmentComponent,
 
   ],
   imports: [
@@ -59,9 +68,13 @@ import { NewUserComponent } from './new-user/new-user.component';
     FormsModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatTabsModule
+    // MatMomentDateModule
   ],
-  providers: [ AuthGuard ,AuthService],
+  providers: [ AuthGuard ,AuthService,httpInterceptProvidees],
   bootstrap: [AppComponent],
   entryComponents:[MatDialogExampleComponent]
 })

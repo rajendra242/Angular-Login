@@ -17,14 +17,8 @@ import { from } from 'rxjs';
 
 export class MatDialogExampleComponent implements OnInit {
   appointmentbooking: FormGroup;
-  // vlauedata: any;
-  // DataPost = new Post()
   obj1: any;
-  // error: any;
-  // postData: any;
   api: any;
-  // clear: any;
-  // json;
   obj: any = [];
   @Output() send_data = new EventEmitter<object>();
   updateApi: any;
@@ -35,11 +29,11 @@ export class MatDialogExampleComponent implements OnInit {
   // userget : 'http://localhost/wordpress/wordpress/wp-admin/admin-ajax.php?location=1&service=1&worker=1&date=2020-04-18&end_date=2020-04-18&start=13%3A30&check=3ce21682fd&action=ea_res_appointment'
 
 
-  // data: any = {};
   // httpClient: any;
   demo: any;
 
   isShow :boolean = false;
+  newheader: any;
   constructor(private http: HttpClient, private _Auth: AuthService, private router: Router) {
     // console.log('router data', this.router.getCurrentNavigation().extras.state);
     // this.demo = this.router.getCurrentNavigation().extras.state;
@@ -51,6 +45,15 @@ export class MatDialogExampleComponent implements OnInit {
 
     this.appointmentbooking = new FormGroup({
       id: new FormControl('', Validators.required),
+      location : new FormControl('',Validators.required),
+      service : new FormControl('',Validators.required),
+      worker : new FormControl('',Validators.required),
+      start : new FormControl('',Validators.required),
+      end : new FormControl('',Validators.required),
+      end_date : new FormControl('',Validators.required),
+      status : new FormControl('',Validators.required),
+      price : new FormControl('',Validators.required),
+      date : new FormControl('',Validators.required),
       name: new FormControl('', Validators.compose([
         Validators.required,
         Validators.maxLength(25),
@@ -96,30 +99,29 @@ export class MatDialogExampleComponent implements OnInit {
        }
      ) 
   }
+  
   BookAppointment(value) {
-    const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-
     console.log("book apoinment", value);
 
     this.appointmentbooking.reset();
 
-    // console.log('this is new object', this.vlauedata);
 
     var userID = (localStorage.getItem("id"));
 
-    this.api = `http://localhost/wordpress/wordpress/wp-json/custom-plugin/id?`
+    this.api = `http://localhost/wordpress/wordpress/wp-json/custom-plugin/id`
     console.log(this.api)
 
-    return this.http.post(this.api, `name=${value.name}&email=${value.email}&phone=${value.phone}&userID=${userID}&description=${value.description}`
-      , { headers, responseType: 'text' }).subscribe((data) => {
-        this.obj1 = data;
-        // console.log('this is api data ===>', this.obj);
+    return this.http.post<any>(this.api,`location=${value.location}&service=${value.service}&worker=${value.worker}&name=${value.name}&email=${value.email}&phone=${value.phone}&date=${value.date}&start=${value.start}&end=${value.end}&end_date=${value.end_date}&description=${value.description}&status=${value.status}&price=${value.price}&userID=${userID}`
+      , {
+        headers : new HttpHeaders()
+        .set('Content-Type','application/x-www-form-urlencoded')
+
+      }).subscribe((data) => {
+        next : this.obj1 = data;
         value.id = this.obj1;
         console.log("the user id is ====>", value);
         localStorage.setItem("prim_id", JSON.stringify(value.id));
-        // this.router.navigate(['real'], { state: value})
         this.send_data.emit(value);
-        // this.vlauedata.push(this.obj);
       },
         error => {
           console.log('error is', error)

@@ -9,6 +9,8 @@ import { from } from 'rxjs';
 import { AuthGuard } from './guards/auth.guard';
 import { RealComponent } from './real/real.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { ForgetpassComponent } from './forgetpass/forgetpass.component';
+import { NewappointmentComponent } from './newappointment/newappointment.component';
 
 
 const routes: Routes = [
@@ -23,10 +25,17 @@ const routes: Routes = [
     {
       path :'login',
       component : LoginComponent,
+      
+    },
+    {
+      path :'adminapp',
+      component : NewappointmentComponent,
+      
     },
     {
       path : 'userbookings',
-      component : UserbookingsComponent
+      component : UserbookingsComponent,
+      canActivate : [AuthGuard]
     },
     {
       path : 'real',
@@ -40,6 +49,16 @@ const routes: Routes = [
     {
       path :'new',
       component : NewUserComponent
+
+    },
+    {
+      path :'admin',
+      component : AdminComponent
+
+    },
+    {
+      path :'pass',
+      component : ForgetpassComponent
 
     }
     // {

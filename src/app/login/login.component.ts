@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
       if (this.jsonapi != null) {
         console.log('this is loged user ID =====>', this.jsonapi.ID)
         localStorage.setItem("id", JSON.stringify(this.jsonapi.ID));
+        localStorage.setItem("email",JSON.stringify(this.jsonapi.data.user_email))
         localStorage.setItem('user_login', JSON.stringify(this.jsonapi.data.user_login))
         // this.router.navigate(['Home'], { state: value })
       } else {
@@ -84,6 +85,10 @@ export class LoginComponent implements OnInit {
     //   console.log('username and password is worng')
     // }
 
+  }
+  func(){
+    console.log('this is foget link');
+    this.router.navigate(['pass']);
   }
   NewUser(){
     console.log('new form')

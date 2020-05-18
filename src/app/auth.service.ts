@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   json: any;
   form: any;
-  // serverUrl = ();
+  id: string;
   isLogged: BehaviorSubject<boolean>;
   user: any;
   alluser: any;
@@ -27,25 +27,39 @@ export class AuthService {
 
   private _hide = new Subject<any>();
   hide$ = this._hide.asObservable();
-  
-  
+  HeaderID: any;
+
+
+  private confirmed = new Subject<any>();
+  addmin1$ = this.confirmed.asObservable();
+
+  private pending = new Subject<any>();
+  addmin2$ = this.pending.asObservable();
+
+  private cencal = new Subject<any>();
+  addmin3$ = this.cencal.asObservable();
+
   constructor(private http: HttpClient, private router: Router) { }
+
+
 
   sendMessage(message: any) {
     this._teacherMessageSource.next(message);
   }
 
-  hideButton(hide : any){
+  hideButton(hide: any) {
     this._hide.next(hide);
   }
 
-
-  
-
-
-
-
-
+  AdminData1(meassage) {
+    this.confirmed.next(meassage);
+  }
+  AdminData2(meassage) {
+    this.confirmed.next(meassage);
+  }
+  AdminData3(meassage) {
+    this.confirmed.next(meassage);
+  }
 
 
 
@@ -79,13 +93,19 @@ export class AuthService {
   // }
 
 
-  Dispalyappointment(demo) {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
+  Dispalyappointment(demo: any) {
+    this.id = JSON.parse(localStorage.getItem('email'))
+    var headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
+    // headers = new HttpHeaders().set('email' ,`${this.id}`);
+    // headers = new HttpHeaders().set('userID' ,demo);
+    console.log("this is header id ====>", headers)
     console.log('service called', demo);
+    // this.HeaderID = JSON.parse(localStorage.getItem('id'))
     return this.http.get
       (`http://localhost/wordpress/wordpress/wp-json/custom-plugin/userbookingappointments?userID=${demo}`,
         // ('http://localhost/wordpress/wordpress/wp-json/custom-plugin/userbookingappointments',
-        { headers, responseType: 'json' });
+        { headers, responseType: 'json', }
+      );
 
   }
 
@@ -143,12 +163,12 @@ export class AuthService {
 
   New(value) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
-    console.log('this is name ====>',value.user_login);
-    console.log('this is pass ====>',value.user_pass);
-    console.log('this is nicename ====>',value.user_nicename);
-    console.log('this is email ====>',value.user_email);
-    console.log('this is resited ====>',value.user_registered);
-    console.log('this is disp ====>',value.display_name);
+    console.log('this is name ====>', value.user_login);
+    console.log('this is pass ====>', value.user_pass);
+    console.log('this is nicename ====>', value.user_nicename);
+    console.log('this is email ====>', value.user_email);
+    console.log('this is resited ====>', value.user_registered);
+    console.log('this is disp ====>', value.display_name);
 
 
     return this.http.post(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/newuser?
@@ -163,12 +183,36 @@ export class AuthService {
 
   }
 
+  password(value) {
+    // console.log('this is user value ===>',value);
+    var pass = JSON.parse(localStorage.getItem('resetpass'))
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
+    return this.http.put(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/forgotpass?user_email=${pass}`, { headers, responseType: 'json' })
+  }
 
 
+  interceptorauth(): boolean {
+    var usremail = JSON.parse(localStorage.getItem('email'))
+    console.log('user_email', usremail)
+    if (usremail == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
+  status_confirm() {
+    var userID = JSON.parse(localStorage.getItem('id'))
+    console.log("this is confirm ID =====> ", userID)
+    var headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
+    return this.http.get(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/conform?userID=${userID}`, { headers, responseType: 'json' })
+  }
 
-
-
+  new_user_mail(value) {
+    console.log("server Email ===>", value.user_email);
+    var headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
+    return this.http.post(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/email?email=${value.user_email}`, { headers, responseType: 'text' })
+  }
 
 
 
