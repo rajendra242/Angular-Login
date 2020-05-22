@@ -11,6 +11,8 @@ import { RealComponent } from './real/real.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { ForgetpassComponent } from './forgetpass/forgetpass.component';
 import { NewappointmentComponent } from './newappointment/newappointment.component';
+import { OtpComponent } from './otp/otp.component';
+import { NewpassComponent } from './newpass/newpass.component';
 
 
 const routes: Routes = [
@@ -54,6 +56,16 @@ const routes: Routes = [
     {
       path :'admin',
       component : AdminComponent
+
+    },
+    {
+      path :'otp',
+      component : OtpComponent
+
+    },
+    {
+      path :'newpass',
+      component : NewpassComponent
 
     },
     {

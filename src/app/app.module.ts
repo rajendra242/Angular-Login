@@ -27,12 +27,16 @@ import { MypipPipe } from './mypip.pipe';
 import { RealComponent } from './real/real.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NewUserComponent } from './new-user/new-user.component';
-import { httpInterceptProvidees } from './http-interseptor';
+// import { httpInterceptProvidees } from './http-interseptor';
 import { ForgetpassComponent } from './forgetpass/forgetpass.component';
 import { NewappointmentComponent } from './newappointment/newappointment.component';
 import {MatNativeDateModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
+import { OtpComponent } from './otp/otp.component';
+import { NgOtpInputModule } from  'ng-otp-input';
+import { NewpassComponent } from './newpass/newpass.component';
+import { CountdownModule } from 'ngx-countdown';
 
 // import { MatMomentDateModule } from "@angular/material";
 
@@ -49,10 +53,14 @@ import {MatTabsModule} from '@angular/material/tabs';
     NewUserComponent,
     ForgetpassComponent,
     NewappointmentComponent,
+    OtpComponent,
+    NewpassComponent,
+    
 
   ],
   imports: [
     BrowserModule,
+    CountdownModule,
     AppRoutingModule,
     HttpClientModule,
     MatFormFieldModule,
@@ -71,10 +79,12 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatCheckboxModule,
     MatNativeDateModule,
     MatSelectModule,
-    MatTabsModule
+    MatTabsModule,
+    NgOtpInputModule
     // MatMomentDateModule
   ],
-  providers: [ AuthGuard ,AuthService,httpInterceptProvidees],
+  providers: [ AuthGuard ,AuthService,],   
+  // httpInterceptProvidees
   bootstrap: [AppComponent],
   entryComponents:[MatDialogExampleComponent]
 })

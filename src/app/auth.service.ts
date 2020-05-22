@@ -39,6 +39,9 @@ export class AuthService {
   private cencal = new Subject<any>();
   addmin3$ = this.cencal.asObservable();
 
+  private otp = new Subject<any>();
+  otp1$ = this.otp.asObservable();
+
   constructor(private http: HttpClient, private router: Router) { }
 
 
@@ -59,6 +62,9 @@ export class AuthService {
   }
   AdminData3(meassage) {
     this.confirmed.next(meassage);
+  }
+  newOTP(meassage) {
+    this.otp.next(meassage);
   }
 
 
@@ -112,7 +118,10 @@ export class AuthService {
   login(value) {
     localStorage.setItem("value", JSON.stringify(value));
     console.log('this is value of', value)
-    return this.http.get(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/login?username=${value.username}&password=${value.password}`)
+    const headers = new HttpHeaders().set('Content-Type', 'application/json; charset=UTF-8');
+
+    return this.http.get(`http://localhost/wordpress/wordpress/wp-json/custom-plugin/login?username=${value.username}&password=${value.password}`,
+          { headers, responseType: 'json' });
   }
 
 

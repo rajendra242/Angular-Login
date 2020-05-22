@@ -1,0 +1,21 @@
+<div class="row">
+
+    <div class="col-md-6 offset-md-3 mt-4">
+        <form [formGroup]="otp">
+            <div class="form-group">
+                <label for="resetPasswordEmail">enter OTP</label>
+                <!-- <ng-otp-input name="otp" [config]="{length:6}"></ng-otp-input> -->
+                <!-- <input type="text" class="form-control" placeholder="0" maxlength="1" />
+                <input type="text" class="form-control" placeholder="0" maxlength="1" />
+                <input type="text" class="form-control" placeholder="0" maxlength="1" />
+                <input type="text" class="form-control" placeholder="0" maxlength="1" /> -->
+                <input id="partitioned" type="text" formControlName="user_otp" maxlength="6" /><br>
+                <br> <button class="btn btn-primary" (click)="OTP(otp.value)">Done<i class="fa fa-paper-plane"></i></button>
+            </div>
+            <!-- <div class="form-group">
+                <input type="password" formControlName="password" class="form-control" name="password" placeholder="enter new password">
+            </div> -->
+        </form>
+    </div>
+    <countdown id="countdown" [config]="config" (event)="onTimerFinished($event)" class="fa fa-clock-o"></countdown>
+</div>
